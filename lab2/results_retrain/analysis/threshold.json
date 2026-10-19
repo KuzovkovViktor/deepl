@@ -1,0 +1,7 @@
+{
+  "t_star": 0.03119388222694397,
+  "rule": "predict fraud if score >= t_star",
+  "selected_on": "validation",
+  "validation_min_cost": 194,
+  "tied_minimum_rows": 1
+}
