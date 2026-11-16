@@ -1,0 +1,139 @@
+{
+  "regime": "scratch",
+  "seed": 1,
+  "split_sha256": "d3a611aec41f6e335ab58287f10a443f3e0e35aa9adfefae662d48b15af567f9",
+  "git": {
+    "commit": "unknown (не git-репозиторій)",
+    "dirty": null
+  },
+  "env": {
+    "python": "3.12.2",
+    "torch": "2.14.1+cpu",
+    "torchvision": "0.29.2+cpu",
+    "numpy": "2.5.4",
+    "device": "cpu (AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD)"
+  },
+  "settings": {
+    "transforms_train": "RandomResizedCrop(160, scale=(0.7, 1.0)) -> RandomHorizontalFlip() -> ToTensor() -> Normalize(mean, std)",
+    "transforms_eval": "Resize((160, 160)) -> ToTensor() -> Normalize(mean, std)",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "img_size": 160,
+    "model": "torchvision resnet18, fc = Linear(512, 6) стандартної ініціалізації",
+    "pretrained_weights": "ResNet18_Weights.IMAGENET1K_V1 (frozen, unfreeze); None (scratch)",
+    "trainable": {
+      "scratch": null,
+      "frozen": [
+        "fc."
+      ],
+      "unfreeze": [
+        "layer4.",
+        "fc."
+      ]
+    },
+    "eval_modules": {
+      "scratch": [],
+      "frozen": [
+        "conv1",
+        "bn1",
+        "layer1",
+        "layer2",
+        "layer3",
+        "layer4"
+      ],
+      "unfreeze": [
+        "conv1",
+        "bn1",
+        "layer1",
+        "layer2",
+        "layer3"
+      ]
+    },
+    "lr_head": 0.003,
+    "lr_backbone_layer4": 0.0003,
+    "optimizer": "AdamW",
+    "optimizer_defaults": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0001,
+      "amsgrad": false,
+      "maximize": false,
+      "foreach": null,
+      "capturable": false,
+      "differentiable": false,
+      "fused": null,
+      "decoupled_weight_decay": true
+    },
+    "weight_decay": 0.0001,
+    "batchnorm": {
+      "momentum": 0.1,
+      "eps": 1e-05
+    },
+    "criterion": "CrossEntropyLoss(), середнє за пакетом, без вагових коефіцієнтів, без згладжування",
+    "train_loader": {
+      "batch_size": 32,
+      "shuffle": true,
+      "drop_last": false,
+      "num_workers": 0,
+      "generator/sampler": "немає (глобальний генератор PyTorch)"
+    },
+    "eval_loader": {
+      "batch_size": 64,
+      "shuffle": false,
+      "num_workers": 0
+    },
+    "epochs": 8,
+    "train_per_class": 200,
+    "steps_per_epoch_last_batch_note": "останній неповний пакет не відкидається",
+    "dtype": "float32",
+    "lr_schedule": null,
+    "grad_clip": null,
+    "amp": false,
+    "label_smoothing": 0.0,
+    "class_weights": null,
+    "early_stopping": false,
+    "skip_split_control": false
+  },
+  "optimizer_groups": [
+    {
+      "name": "all",
+      "n_params": 11179590,
+      "lr": 0.003
+    }
+  ],
+  "epoch_train_loss": [
+    1.7233274046579996,
+    1.2434654839833577,
+    1.1890693600972493,
+    1.194152291615804,
+    1.1064632034301758,
+    1.1132098293304444,
+    1.0563595008850097,
+    0.9532454498608907
+  ],
+  "epoch_val_macro_f1": [
+    0.31783001600613403,
+    0.29532469477732104,
+    0.3964950212454624,
+    0.4692945385990848,
+    0.381034719809967,
+    0.5290410029844499,
+    0.608065810620308,
+    0.608565657791033
+  ],
+  "final_train_loss": 0.9532454498608907,
+  "final_val_macro_f1": 0.608565657791033,
+  "train_seconds": 179.12928680001642,
+  "total_seconds_with_validation": 259.94559099999606
+}
